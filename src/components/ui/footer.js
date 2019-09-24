@@ -23,7 +23,8 @@ const iconVariants = {
     pathLength: 0,
     transition: {
       yoyo: 1,
-    }
+    },
+    opacity: 0,
   },
 };
 
@@ -50,7 +51,7 @@ const Texas = () => (
       fill="none"
       stroke="white"
       variants={iconVariants}
-      initial={{ pathLength: 1 }}
+      initial={{ pathLength: 1, opacity: 1 }}
     />
   </motion.svg>
 );
@@ -70,7 +71,7 @@ const GitHub = () => (
         fill="none"
         stroke="white"
         variants={iconVariants}
-        initial={{ pathLength: 1 }}
+        initial={{ pathLength: 1, opacity: 1 }}
       />
     </motion.svg>
   </a>
