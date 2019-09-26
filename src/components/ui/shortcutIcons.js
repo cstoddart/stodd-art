@@ -10,7 +10,9 @@ const StyledShortcutKey = styled(motion.div)`
   height: 20px;
   color: #223;
   background-color: white;
-  box-shadow: 3px 3px rgba(255, 255, 255, 0.5);
+  box-shadow:
+    3px 3px rgba(255, 255, 255, 0.5),
+    2px 2px 5px black;
   border-radius: 3px;
   font-size: 8px;
 
@@ -21,48 +23,16 @@ const StyledShortcutKey = styled(motion.div)`
 
 const shortcutKeyUp = {
 translateY: 0,
-boxShadow: '3px 3px 1px 0 rgba(255, 255, 255, 0.5)',
+boxShadow: '3px 3px 1px 0 rgba(255, 255, 255, 0.5), 2px 2px 5px black',
 };
 
 const shortcutKeyDown = {
 translateY: -4,
-boxShadow: '2px 2px 1px 0 rgba(255, 255, 255, 0.5)',
+boxShadow: '2px 2px 1px 0 rgba(255, 255, 255, 0.5), 2px 2px 5px black',
 };
 
 const spaceBarVariants = {
 initial: shortcutKeyUp,
-// animate: {
-//   translateY: [
-//     shortcutKeyUp.translateY,
-//     shortcutKeyDown.translateY,
-//     shortcutKeyUp.translateY,
-//     shortcutKeyDown.translateY,
-//     shortcutKeyUp.translateY,
-//     shortcutKeyUp.translateY,
-//   ],
-//   boxShadow: [
-//     shortcutKeyUp.boxShadow,
-//     shortcutKeyDown.boxShadow,
-//     shortcutKeyUp.boxShadow,
-//     shortcutKeyDown.boxShadow,
-//     shortcutKeyUp.boxShadow,
-//     shortcutKeyUp.boxShadow,
-//   ],
-//   times: [
-//     0 / 6,
-//     1 / 6,
-//     2 / 6,
-//     3 / 6,
-//     4 / 6,
-//     5 / 6,
-//     6 / 6,
-//   ],
-//   transition: {
-//     duration: 1.5,
-//     repeatDelay: 2,
-//     loop: 3,
-//   },
-// },
 exit: {
   opacity: 0,
   transition: {
@@ -73,10 +43,8 @@ exit: {
 
 const ShortcutKey = ({ width, children }) => (
   <StyledShortcutKey
-    // whileHover="animate"
     variants={spaceBarVariants}
     initial="initial"
-    // animate="animate"
     width={width}
     exit="exit"
   >
