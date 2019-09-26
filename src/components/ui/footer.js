@@ -2,19 +2,20 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { Flex } from './flex';
+import { ShortcutIcons } from './shortcutIcons';
 
 const StyledFooter = styled(Flex)`
   position: fixed;
   bottom: 25px;
+`;
+  
+const FooterRow = styled(Flex)`
+  &:not(:last-of-type) {
+    margin-bottom: 35px;
+  }
 
   ${Flex}:not(:last-of-type) {
     margin-right: 25px;
-  }
-`;
-
-const FooterRow = styled(Flex)`
-  &:not(:last-of-type) {
-    margin-bottom: 50px;
   }
 `;
 
@@ -23,75 +24,6 @@ const FooterText = styled(motion.span)`
   margin-right: 10px;
   font-size: 14px;
 `;
-
-const StyledShortcutKey = styled(motion.div)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: ${({ width }) => width || '35px'};
-  height: 25px;
-  color: #223;
-  background-color: white;
-  box-shadow: 3px 3px rgba(255, 255, 255, 0.5);
-  border-radius: 3px;
-  font-size: 12px;
-
-  &:not(:last-of-type) {
-    margin-right: 15px;
-  }
-`;
-
-const shortcutKeyUp = {
-  translateY: 0,
-  boxShadow: '5px 5px 1px 0 rgba(255, 255, 255, 0.5)',
-};
-
-const shortcutKeyDown = {
-  translateY: -4,
-  boxShadow: '2px 2px 1px 0 rgba(255, 255, 255, 0.5)',
-};
-
-const spaceBarVariants = {
-  initial: shortcutKeyUp,
-  // animate: {
-  //   translateY: [
-  //     shortcutKeyUp.translateY,
-  //     shortcutKeyDown.translateY,
-  //     shortcutKeyUp.translateY,
-  //     shortcutKeyDown.translateY,
-  //     shortcutKeyUp.translateY,
-  //     shortcutKeyUp.translateY,
-  //   ],
-  //   boxShadow: [
-  //     shortcutKeyUp.boxShadow,
-  //     shortcutKeyDown.boxShadow,
-  //     shortcutKeyUp.boxShadow,
-  //     shortcutKeyDown.boxShadow,
-  //     shortcutKeyUp.boxShadow,
-  //     shortcutKeyUp.boxShadow,
-  //   ],
-  //   times: [
-  //     0 / 6,
-  //     1 / 6,
-  //     2 / 6,
-  //     3 / 6,
-  //     4 / 6,
-  //     5 / 6,
-  //     6 / 6,
-  //   ],
-  //   transition: {
-  //     duration: 1.5,
-  //     repeatDelay: 2,
-  //     loop: 3,
-  //   },
-  // },
-  exit: {
-    opacity: 0,
-    transition: {
-      yoyo: 1,
-    },
-  },
-};
 
 const iconVariants = {
   redraw: {
@@ -152,26 +84,11 @@ const GitHub = () => (
   </a>
 );
 
-const ShortcutKey = ({ width, children }) => (
-  <StyledShortcutKey
-    // whileHover="animate"
-    variants={spaceBarVariants}
-    initial="initial"
-    // animate="animate"
-    width={width}
-    exit="exit"
-  >
-    {children}
-  </StyledShortcutKey>
-);
-
 export const Footer = () => {
   return (
     <StyledFooter direction="column">
       <FooterRow>
-        <ShortcutKey width="100px">Space</ShortcutKey>
-        <ShortcutKey>{'<'}</ShortcutKey>
-        <ShortcutKey>{'>'}</ShortcutKey>
+        <ShortcutIcons />
       </FooterRow>
       <FooterRow>
         <Flex>
