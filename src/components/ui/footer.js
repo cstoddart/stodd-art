@@ -70,7 +70,7 @@ const Texas = () => (
 );
 
 const GitHub = () => (
-  <a href="https://github.com/cstoddart/stodd-art" target="_blank">
+  <a href="https://github.com/cstoddart/stodd-art" target="_blank" rel="noreferrer noopener">
     <motion.svg
       viewBox="0 0 33 32"
       width="18px"
@@ -110,7 +110,9 @@ export const Footer = () => {
           <Texas />
         </Flex>
         <Flex>
-          <FooterText variants={textVariants} exit="exit">View Source</FooterText>
+          <a href="https://github.com/cstoddart/stodd-art" target="_blank" rel="noreferrer noopener">
+            <FooterText variants={textVariants} exit="exit">View Source</FooterText>
+          </a>
           <GitHub />
         </Flex>
       </FooterRow>
