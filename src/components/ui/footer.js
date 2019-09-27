@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+
+import { appContext } from '../../context';
 import { Flex } from './flex';
 import { ShortcutIcons } from './shortcutIcons';
 
@@ -92,11 +94,16 @@ const GitHub = () => (
 );
 
 export const Footer = () => {
+  const context = useContext(appContext);
+
   return (
     <StyledFooter direction="column">
-      <FooterRow>
-        <ShortcutIcons />
-      </FooterRow>
+      {context.isMobileDevice
+        ? null
+        : <FooterRow>
+          <ShortcutIcons />
+        </FooterRow>
+      }
       <FooterRow>
         <Flex>
           <FooterText variants={textVariants} exit="exit">Made In</FooterText>

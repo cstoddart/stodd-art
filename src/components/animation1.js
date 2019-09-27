@@ -1,5 +1,4 @@
-import React, { useState
- } from 'react';
+import React, { useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 
 import { useShortcut } from '../hooks/useShortcut';
