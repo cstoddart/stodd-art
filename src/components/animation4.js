@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 
 import { useShortcut } from '../hooks/useShortcut';
 import { Flex } from './ui/flex';
@@ -12,39 +12,44 @@ const Squares = styled(Flex).attrs({
   as: 'ul',
   wrap: 'true',
 })`
-  width: 390px;
+  width: 260px;
 `;
 
 const Square = styled(motion.li)`
-  drop-shadow: 2px 2px 5px black;
-  width: 100px;
-  height: 100px;
-  margin: 15px;
+  box-shadow: 2px 2px 5px black;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
   border-radius: 5px;
+  background-color: ${({ color }) => color};
+  cursor: pointer;
 `;
 
 const spring = {
-  type: "spring",
+  type: 'spring',
   damping: 20,
-  stiffness: 300
+  stiffness: 300,
 };
 
-const initialColors = [
-  "#1d1",
-  "#080",
-  "#ffffff",
-  "#fff",
-  "#888",
-  "#11dd11",
+const initialSquares = [
+  { color: '#1d1', key: 1 },
+  { color: '#080', key: 2 },
+  { color: '#1d1', key: 3 },
+  { color: '#080', key: 4 },
+  { color: '#1d1', key: 5 },
+  { color: '#080', key: 6 },
+  { color: '#1d1', key: 7 },
+  { color: '#080', key: 8 },
+  { color: '#1d1', key: 9 },
 ];
 
 const shuffle = function (array) {
 	let currentIndex = array.length;
 	let temporaryValue, randomIndex;
 
-	while (0 !== currentIndex) {
+	while (currentIndex !== 0) {
 		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex -= 1;
+		currentIndex--;
 
 		temporaryValue = array[currentIndex];
 		array[currentIndex] = array[randomIndex];
@@ -59,32 +64,52 @@ const variants = {
     scale: 1,
     rotate: 0,
   },
-  squeezed: {
-    scale: 0.9,
-    rotate: 5,
+  squeeze: {
+    scale: 0.8,
+    rotate: 90,
   },
   exit: {
     rotate: 1080,
     opacity: 0,
   },
+  hover: {
+    scale: 1.2,
+    transition: {
+      duration: 0.2,
+      yoyo: 1,
+    },
+  },
 };
 
 export const Animation4 = () => {
-  const [colors, setColors] = useState(initialColors);
-  const [squaresSqueezed, setSquaresSqueezed] = useState(false);
+  const [squares, setSquares] = useState(initialSquares);
+  const controls = useAnimation();
+
+  const squeezeSquares = () => controls.start('squeeze');
+  
+  const shuffleSquares = () => {
+    controls.start('initial');
+    controls.start({ rotate: 0 });
+    setSquares(shuffle([...squares]));
+  };
+
+  const hoverSquare = (event) => (
+    controls.start((id) => (
+      event.target.id === id.toString()
+        ? variants.hover
+        : {}
+    ))
+  );
 
   useShortcut({
     eventType: 'keydown',
-    eventHandler: () => setSquaresSqueezed(true),
+    eventHandler: squeezeSquares,
     triggerKey: 'Space',
   });
 
   useShortcut({
     eventType: 'keyup',
-    eventHandler: () => {
-      setSquaresSqueezed(false);
-      setColors(shuffle([...colors]));
-    },
+    eventHandler: shuffleSquares,
     triggerKey: 'Space',
   });
 
@@ -92,16 +117,20 @@ export const Animation4 = () => {
     <>
       <LeftArrow to="/3" />
       <Squares>
-        {colors.map((background, index) => (
+        {squares.map((square, index) => (
           <Square
-            key={background}
+            key={square.key}
+            custom={square.key}
+            id={square.key}
+            color={square.color}
+            animate={controls}
             layoutTransition={spring}
-            whileHover="squeezed"
-            animate={squaresSqueezed ? 'squeezed' : 'initial'}
             variants={variants}
-            style={{ background }}
-            initial="initial"
-            exit="exit" 
+            exit="exit"
+            onMouseEnter={hoverSquare}
+            onTapStart={squeezeSquares}
+            onTap={shuffleSquares}
+            onTapCancel={shuffleSquares}
           />
         ))}
       </Squares>
