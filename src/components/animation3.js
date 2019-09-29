@@ -82,7 +82,7 @@ export const Animation3 = () => {
           variants={variants}
         />
       </motion.svg>
-      <RightArrow to="/1" />
+      <RightArrow to="/4" />
       <Footer />
     </>
   );

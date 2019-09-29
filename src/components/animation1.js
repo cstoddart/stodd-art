@@ -92,7 +92,7 @@ export const Animation1 = () => {
 
   return (
     <>
-      <LeftArrow to="/3" />
+      <LeftArrow to="/4" />
       <motion.svg
         viewBox="0 0 30 30"
         width="100"

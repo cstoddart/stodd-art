@@ -5,4 +5,5 @@ export const Flex = styled.div`
   flex-direction: ${({ direction }) => direction || 'row'};
   align-items: ${({ align }) => align || 'center'};
   justify-content: ${({ justify }) => justify || 'center'};
+  flex-wrap: ${({ wrap }) => wrap ? 'wrap' : 'nowrap'};
 `;

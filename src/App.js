@@ -3,11 +3,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion';
 
 import { appContext } from './context';
-import './App.css';
+import { isMobileDevice } from './utilities';
+import { GlobalStyles } from './globalStyles';
 import { Animation1 } from './components/animation1';
 import { Animation2 } from './components/animation2';
 import { Animation3 } from './components/animation3';
-import { isMobileDevice } from './utilities';
+import { Animation4 } from './components/animation4';
 
 export class App extends Component {
   state = {
@@ -22,6 +23,7 @@ export class App extends Component {
   render() {
     return (
       <appContext.Provider value={this.state}>
+        <GlobalStyles />
         <div className="App">
           <BrowserRouter>
             <Route
@@ -32,6 +34,7 @@ export class App extends Component {
                     <Route path='/1' component={Animation1} />
                     <Route path='/2' component={Animation2} />
                     <Route path='/3' component={Animation3} />
+                    <Route path='/4' component={Animation4} />
                   </Switch>
                 </AnimatePresence>
               )}

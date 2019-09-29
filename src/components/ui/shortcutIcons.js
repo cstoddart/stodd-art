@@ -21,29 +21,22 @@ const StyledShortcutKey = styled(motion.div)`
   }
 `;
 
-const shortcutKeyUp = {
-translateY: 0,
-boxShadow: '3px 3px 1px 0 rgba(255, 255, 255, 0.5), 2px 2px 5px black',
-};
-
-const shortcutKeyDown = {
-translateY: -4,
-boxShadow: '2px 2px 1px 0 rgba(255, 255, 255, 0.5), 2px 2px 5px black',
-};
-
-const spaceBarVariants = {
-initial: shortcutKeyUp,
-exit: {
-  opacity: 0,
-  transition: {
-    yoyo: 1,
+const shortcutKeyVariants = {
+  initial: {
+    translateY: 0,
+    boxShadow: '3px 3px 1px 0 rgba(255, 255, 255, 0.5), 2px 2px 5px black',
   },
-},
+  exit: {
+    opacity: 0,
+    transition: {
+      yoyo: 1,
+    },
+  },
 };
 
 const ShortcutKey = ({ width, children }) => (
   <StyledShortcutKey
-    variants={spaceBarVariants}
+    variants={shortcutKeyVariants}
     initial="initial"
     width={width}
     exit="exit"
