@@ -44,7 +44,7 @@ export const Animation3 = () => {
 
   const squashArrow = () => controls.start('squash');
 
-  const launchArrow = () => controls.stop('move');
+  const launchArrow = () => controls.start('launch');
 
   useShortcut({
     eventType: 'keydown',
