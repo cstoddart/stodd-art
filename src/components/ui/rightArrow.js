@@ -1,10 +1,16 @@
 import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 import { useShortcut } from '../../hooks/useShortcut';
 
 const variants = {
+  initial: {
+    scale: 1,
+    translateX: 0,
+    opacity: 1,
+    pathLength: 1,
+  },
   pressed: {
     scale: 0.9,
     translateX: 5,
@@ -20,10 +26,24 @@ const variants = {
 
 export const RightArrow = ({ to }) => {
   const linkRef = useRef(null);
+  const controls = useAnimation();
+
+  const pressArrow = () => controls.start('pressed');
+
+  const clickArrow = () => {
+    controls.start('initial');
+    linkRef.current.click();
+  };
+  
+  useShortcut({
+    eventType: 'keydown',
+    eventHandler: pressArrow,
+    triggerKey: 'ArrowRight',
+  });
   
   useShortcut({
     eventType: 'keyup',
-    eventHandler: () => linkRef.current.click(),
+    eventHandler: clickArrow,
     triggerKey: 'ArrowRight',
   });
 
@@ -41,9 +61,10 @@ export const RightArrow = ({ to }) => {
           filter: 'drop-shadow(2px 2px 5px black)',
         }}
         exit="exit"
+        animate={controls}
       >
         <motion.path
-          initial={{ pathLength: 1, opacity: 1, translateX: 0 }}
+          initial="initial"
           fill="none"
           stroke="white"
           strokeWidth="2px"

@@ -63,7 +63,7 @@ export const Animation3 = () => {
     <>
       <LeftArrow to="/2" />
       <motion.svg
-        width="250px"
+        width="200px"
         viewBox="0 0 164 44"
         animate={arrowLaunched ? 'launched' : arrowPressed ? 'pressed' : false}
         exit="exit"

@@ -128,6 +128,7 @@ export const Animation4 = () => {
             variants={variants}
             exit="exit"
             onMouseEnter={hoverSquare}
+            onMouseLeave={() => controls.start('initial')}
             onTapStart={squeezeSquares}
             onTap={shuffleSquares}
             onTapCancel={shuffleSquares}
