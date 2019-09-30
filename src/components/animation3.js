@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
+
 import { LeftArrow } from './ui/leftArrow';
 import { RightArrow } from './ui/rightArrow';
 import { useShortcut } from '../hooks/useShortcut';
@@ -11,10 +12,15 @@ const pathData = {
 };
 
 const variants = {
-  pressed: {
+  initial: {
+    opacity: 1,
+    translateX: 0,
+    translateY: 0
+  },
+  squash: {
     d: pathData.arrowPressed,
   },
-  launched: {
+  launch: {
     d: pathData.arrow,
     translateX: [0, '-100vw', '-100vw', 0, 0],
     opacity: [1, 1, 0, 0, 1],
@@ -34,18 +40,11 @@ const variants = {
 };
 
 export const Animation3 = () => {
-  const [arrowPressed, setArrowPressed] = useState(false);
-  const [arrowLaunched, setArrowLaunched] = useState(false);
+  const controls = useAnimation();
 
-  const squashArrow = () => {
-    setArrowPressed(true);
-    setArrowLaunched(false);
-  }
+  const squashArrow = () => controls.start('squash');
 
-  const launchArrow = () => {
-    setArrowPressed(false);
-    setArrowLaunched(true);
-  }
+  const launchArrow = () => controls.stop('move');
 
   useShortcut({
     eventType: 'keydown',
@@ -65,8 +64,9 @@ export const Animation3 = () => {
       <motion.svg
         width="200px"
         viewBox="0 0 164 44"
-        animate={arrowLaunched ? 'launched' : arrowPressed ? 'pressed' : false}
+        animate={controls}
         exit="exit"
+        whileTap="move"
         onMouseDown={squashArrow}
         onMouseUp={launchArrow}
         style={{
@@ -78,7 +78,7 @@ export const Animation3 = () => {
         <motion.path
           fill="#1d1"
           d={pathData.arrow}
-          initial={{ opacity: 1, translateX: 0 }}
+          initial="initial"
           variants={variants}
         />
       </motion.svg>
