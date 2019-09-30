@@ -95,7 +95,7 @@ export const Animation4 = () => {
 
   const hoverSquare = (event) => (
     controls.start((id) => (
-      event.target.id === id.toString()
+      event.target && event.target.id === id.toString()
         ? variants.hover
         : {}
     ))
