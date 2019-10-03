@@ -79,6 +79,7 @@ const fishVariants = {
     opacity: 1,
     translateX: 0,
     scaleX: 1,
+    scaleY: 1,
     transition: {
       duration: 0,
       delay: 0.3,
