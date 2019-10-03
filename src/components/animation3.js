@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, useAnimation } from 'framer-motion';
 
 import { LeftArrow } from './ui/leftArrow';
@@ -48,14 +48,14 @@ export const Animation3 = () => {
 
   useShortcut({
     eventType: 'keydown',
-    eventHandler: squashArrow,
     triggerKey: 'Space',
+    eventHandler: squashArrow,
   });
 
   useShortcut({
     eventType: 'keyup',
-    eventHandler: launchArrow,
     triggerKey: 'Space',
+    eventHandler: launchArrow,
   });
 
   return (

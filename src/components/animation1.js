@@ -74,14 +74,14 @@ export const Animation1 = () => {
 
   useShortcut({
     eventType: 'keydown',
-    eventHandler: () => controls.start('pressed'),
     triggerKey: 'Space',
+    eventHandler: () => controls.start('pressed'),
   });
 
   useShortcut({
     eventType: 'keyup',
-    eventHandler: () => handleClick(),
     triggerKey: 'Space',
+    eventHandler: () => handleClick(),
   });
 
   const handleClick = () => {
@@ -92,7 +92,7 @@ export const Animation1 = () => {
 
   return (
     <>
-      <LeftArrow to="/4" />
+      <LeftArrow to="/5" />
       <motion.svg
         viewBox="0 0 30 30"
         width="100"

@@ -103,14 +103,14 @@ export const Animation4 = () => {
 
   useShortcut({
     eventType: 'keydown',
-    eventHandler: squeezeSquares,
     triggerKey: 'Space',
+    eventHandler: squeezeSquares,
   });
 
   useShortcut({
     eventType: 'keyup',
-    eventHandler: shuffleSquares,
     triggerKey: 'Space',
+    eventHandler: shuffleSquares,
   });
 
   return (
@@ -135,7 +135,7 @@ export const Animation4 = () => {
           />
         ))}
       </Squares>
-      <RightArrow to="/1" />
+      <RightArrow to="/5" />
       <Footer />
     </>
   );

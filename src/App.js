@@ -9,6 +9,7 @@ import { Animation1 } from './components/animation1';
 import { Animation2 } from './components/animation2';
 import { Animation3 } from './components/animation3';
 import { Animation4 } from './components/animation4';
+import { Animation5 } from './components/animation5';
 
 export class App extends Component {
   state = {
@@ -30,11 +31,12 @@ export class App extends Component {
               render={({ location }) => (
                 <AnimatePresence exitBeforeEnter>
                   <Switch location={location} key={location.pathname}>
-                    <Route exact path='/' component={Animation1} />
-                    <Route path='/1' component={Animation1} />
-                    <Route path='/2' component={Animation2} />
-                    <Route path='/3' component={Animation3} />
-                    <Route path='/4' component={Animation4} />
+                    <Route exact path="/" component={Animation1} />
+                    <Route path="/1" component={Animation1} />
+                    <Route path="/2" component={Animation2} />
+                    <Route path="/3" component={Animation3} />
+                    <Route path="/4" component={Animation4} />
+                    <Route path="/5" component={Animation5} />
                   </Switch>
                 </AnimatePresence>
               )}

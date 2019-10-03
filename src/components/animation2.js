@@ -42,14 +42,14 @@ export const Animation2 = () => {
 
   useShortcut({
     eventType: 'keydown',
-    eventHandler: squashSpring,
     triggerKey: 'Space',
+    eventHandler: squashSpring,
   });
 
   useShortcut({
     eventType: 'keyup',
-    eventHandler: releaseSpring,
     triggerKey: 'Space',
+    eventHandler: releaseSpring,
   });
 
   return (

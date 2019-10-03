@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export const useShortcut = ({ eventType, eventHandler, triggerKey }) => {
+export const useShortcut = ({ eventType, triggerKey, eventHandler }) => {
   useEffect(() => {
     function handleEvent(event) {
       if (event.code === triggerKey) {
