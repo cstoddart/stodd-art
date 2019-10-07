@@ -98,6 +98,8 @@ export const Animation1 = () => {
         width="100"
         height="100"
         whileTap="pressed"
+        onTapCancel={handleClick}
+        onTouchEnd={handleClick}
         whileHover="hover"
         onClick={handleClick}
         animate={controls}

@@ -1,8 +1,19 @@
 import React, { useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { useShortcut } from '../../hooks/useShortcut';
+
+const StyledRightArrow = styled(motion.svg)`
+  position: fixed;
+  right: 5%;
+  bottom: calc(50% - 15px);
+  overflow: visible;
+  filter: drop-shadow(2px 2px 5px black);
+  max-width: 75px;
+  width: 10%;
+`;
 
 const variants = {
   initial: {
@@ -49,17 +60,9 @@ export const RightArrow = ({ to }) => {
 
   return (
     <Link innerRef={linkRef} to={to}>
-      <motion.svg
+      <StyledRightArrow
         viewBox="0 0 30 16"
-        width="75px"
         whileTap="pressed"
-        style={{
-          position: 'fixed',
-          right: '5%',
-          bottom: 'calc(50% - 15px)',
-          overflow: 'visible',
-          filter: 'drop-shadow(2px 2px 5px black)',
-        }}
         exit="exit"
         animate={controls}
       >
@@ -71,7 +74,7 @@ export const RightArrow = ({ to }) => {
           d="M 0 8 h 28 m -5 0 v 5 l 5 -5 l -5 -5 v 5"
           variants={variants}
         />
-      </motion.svg>
+      </StyledRightArrow>
     </Link>
   );
 };

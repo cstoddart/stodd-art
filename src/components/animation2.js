@@ -61,6 +61,7 @@ export const Animation2 = () => {
         onTapStart={squashSpring}
         onTap={releaseSpring}
         onTapCancel={releaseSpring}
+        onTouchEnd={releaseSpring}
         animate={controls}
         width="100px"
         height="100px"

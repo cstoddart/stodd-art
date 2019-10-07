@@ -66,13 +66,17 @@ export const Animation3 = () => {
         viewBox="0 0 164 44"
         animate={controls}
         exit="exit"
-        whileTap="move"
+        onTapCancel={launchArrow}
         onMouseDown={squashArrow}
         onMouseUp={launchArrow}
+        onTouchStart={squashArrow}
+        onTouchEnd={launchArrow}
+        onTouchCancel={launchArrow}
         style={{
           overflow: 'visible',
           filter: 'drop-shadow(2px 2px 5px black)',
-          cursor: 'pointer'
+          cursor: 'pointer',
+          userSelect: 'none'
         }}
       >
         <motion.path

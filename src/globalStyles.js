@@ -25,6 +25,10 @@ export const GlobalStyles = createGlobalStyle`
     list-style-type: none;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   .App {
     display: flex;
     flex-direction: column;
