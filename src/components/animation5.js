@@ -7,71 +7,14 @@ import { LeftArrow } from './ui/leftArrow';
 import { RightArrow } from './ui/rightArrow';
 import { Footer } from './ui/footer';
 
-const StyledTopTeeth = styled(motion.svg)`
-  z-index: 1;
+const StyledFish = styled(motion.g)`
+  cursor: pointer;
 `;
 
-const topTeethVariants = {
-  initial: {
-    opacity: 0,
-    translateY: '-200px',
-  },
-  bite: {
-    opacity: 1,
-    translateY: '90px',
-    transition: {
-      duration: 0.3,
-      ease: 'easeIn',
-    },
-  },
-  biteDelay: {
-    opacity: 1,
-    translateY: '90px',
-    transition: {
-      duration: 0.3,
-      ease: 'easeIn',
-      delay: 1.5,
-    },
-  },
-  hide: {
-    opacity: 0,
-    transition: {
-      delay: 1,
-    },
-  },
-  exit: {
-    rotate: 1080,
-    opacity: 0,
-  },
-};
-
-const TopTeeth = ({ controls }) => (
-  <StyledTopTeeth
-    xmlns="http://www.w3.org/2000/svg"
-    height="100"
-    viewBox="0 0 779.42 99"
-    stroke="#1d1"
-    strokeWidth="4px"
-    variants={topTeethVariants}
-    initial="initial"
-    animate={controls}
-    fill="#223"
-    exit="exit"
-  >
-    <polygon points="216.51 99 259.81 0 173.21 0 216.51 99" />
-    <polygon points="43.3 99 86.6 0 0 0 43.3 99" />
-    <polygon points="303.11 99 346.41 0 259.81 0 303.11 99" />
-    <polygon points="389.71 99 433.01 0 346.41 0 389.71 99" />
-    <polygon points="476.31 99 519.62 0 433.01 0 476.31 99" />
-    <polygon points="562.92 99 606.22 0 519.62 0 562.92 99" />
-    <polygon points="649.52 99 692.82 0 606.22 0 649.52 99" />
-    <polygon points="736.12 99 779.42 0 692.82 0 736.12 99" />
-    <polygon points="129.9 99 173.21 0 86.6 0 129.9 99" />
-  </StyledTopTeeth>
-);
-
-const StyledFish = styled(motion.svg)`
-  cursor: pointer;
+const StyledMotionSvg = styled(motion.svg)`
+  max-height: 100px;
+  width: 60%;
+  overflow: visible;
 `;
 
 const fishVariants = {
@@ -129,25 +72,78 @@ const fishVariants = {
 
 const Fish = ({ controls, handleClick }) => (
   <StyledFish
-    xmlns="http://www.w3.org/2000/svg"
-    width="200px"
-    viewBox="0 0 124.31 49.73"
-    fill="none"
+    fill="#223"
     stroke="#1d1"
-    strokeWidth="2px"
+    strokeWidth="4px"
     variants={fishVariants}
     animate={controls}
     initial="initial"
     onMouseDown={handleClick}
-    exit="exit"
   >
-    <path d="M.72,23.46A65,65,0,0,0,27.41,38.67a55.91,55.91,0,0,0,8.75,1.68C48,41.63,55.37,37.8,68.05,34.78,91,29.33,96.13,26,105.27,29.41A78.8,78.8,0,0,1,123.15,39l.64-31.29a68.18,68.18,0,0,1-17.88,10.94c-8.8,3.58-14.16.39-37-5.57C50.09,8.21,40.55,5.78,32.45,6.57a32.7,32.7,0,0,0-6.74,1.5A59.52,59.52,0,0,0,.72,23.46Z" />
-    <path d="M25.71,8.07c3.9,8.67,3.73,21,1.7,30.6" />
-    <line x1="105.91" y1="18.66" x2="105.27" y2="29.41" />
-    <path d="M59.06,37.2a22.48,22.48,0,0,0,8.51,3.4c4.14.8,16.75,1.09,16.75,1.09l-6.21-9.43" />
-    <path d="M33.6,40s3,2.46,6.26,4.92c4.41,3.36,20.62,4.25,20.62,4.25l-6.7-10.51" />
-    <path d="M36,6.42S40,2.54,41.64,2c9.13-3.29,38.17,0,38.17,0L75.61,14.9" />
+    <path d="M334.15,76.84s6.33,4.36,13.05,8.72c9.17,6,42.93,7.52,42.93,7.52l-14-18.61" />
+    <path d="M387.17,71.86s6.65,4.22,17.72,6c8.62,1.41,34.87,1.93,34.87,1.93L426.82,63.11" />
+    <path d="M339.15,17.35s8.37-6.87,11.74-7.91c19-5.82,79.48,0,79.48,0l-8.75,22.92" />
+    <path d="M265.7,47.52a142.05,142.05,0,0,0,55.57,26.95,134.74,134.74,0,0,0,18.22,3c24.56,2.26,40-4.51,66.4-9.86,47.72-9.66,58.46-15.6,77.47-9.52a173.8,173.8,0,0,1,37.23,17l1.34-55.42A146.6,146.6,0,0,1,484.71,39c-18.33,6.34-29.48.7-77.14-9.86-39.07-8.65-58.95-12.94-75.8-11.56a77.3,77.3,0,0,0-14,2.67A128.51,128.51,0,0,0,265.7,47.52Z" />
+    <path d="M317.74,20.27c8.12,15.35,7.76,37.11,3.53,54.2" />
+    <line x1="484.71" y1="39.02" x2="483.36" y2="58.06" />
   </StyledFish>
+);
+
+const topTeethVariants = {
+  initial: {
+    opacity: 0,
+    translateY: '-200px',
+  },
+  bite: {
+    opacity: [0, 1, 1,],
+    translateY: ['-200px', '-200px', '-1px'],
+    times: [0, 0.75, 1],
+    transition: {
+      duration: 0.75,
+      ease: [0.75, 0, 1, 0.25],
+    },
+  },
+  biteDelay: {
+    opacity: [0, 1, 1,],
+    translateY: ['-200px', '-200px', '-1px'],
+    times: [0, 0.75, 1],
+    transition: {
+      duration: 0.75,
+      ease: [0.75, 0, 1, 0.25],
+      delay: 1.5,
+    },
+  },
+  hide: {
+    opacity: 0,
+    transition: {
+      delay: 1,
+    },
+  },
+  exit: {
+    rotate: 1080,
+    opacity: 0,
+  },
+};
+
+const TopTeeth = ({ controls }) => (
+  <motion.g
+    stroke="#1d1"
+    strokeWidth="4px"
+    variants={topTeethVariants}
+    initial="initial"
+    animate={controls}
+    fill="#223"
+  >
+    <polygon points="218.69 100 262.43 0 174.96 0 218.69 100" />
+    <polygon points="43.74 100 87.48 0 0 0 43.74 100" />
+    <polygon points="306.17 100 349.91 0 262.43 0 306.17 100" />
+    <polygon points="393.65 100 437.39 0 349.91 0 393.65 100" />
+    <polygon points="481.13 100 524.86 0 437.39 0 481.13 100" />
+    <polygon points="568.6 100 612.34 0 524.86 0 568.6 100" />
+    <polygon points="656.08 100 699.82 0 612.34 0 656.08 100" />
+    <polygon points="743.56 100 787.3 0 699.82 0 743.56 100" />
+    <polygon points="131.22 100 174.96 0 87.48 0 131.22 100" />
+  </motion.g>
 );
 
 const bottomTeethVariants = {
@@ -156,19 +152,21 @@ const bottomTeethVariants = {
     translateY: '200px',
   },
   bite: {
-    opacity: 1,
-    translateY: '-90px',
+    opacity: [0, 1, 1,],
+    translateY: ['200px', '200px', '1px'],
+    times: [0, 0.75, 1],
     transition: {
-      duration: 0.3,
-      ease: 'easeIn',
+      duration: 0.75,
+      ease: [0.75, 0, 1, 0.25],
     },
   },
   biteDelay: {
-    opacity: 1,
-    translateY: '-90px',
+    opacity: [0, 1, 1,],
+    translateY: ['200px', '200px', '1px'],
+    times: [0, 0.75, 1],
     transition: {
-      duration: 0.3,
-      ease: 'easeIn',
+      duration: 0.75,
+      ease: [0.75, 0, 1, 0.25],
       delay: 1.5,
     },
   },
@@ -185,27 +183,23 @@ const bottomTeethVariants = {
 };
 
 const BottomTeeth = ({ controls }) => (
-  <motion.svg
-    xmlns="http://www.w3.org/2000/svg"
-    height="100"
-    viewBox="0 0 692.82 99"
+  <motion.g
     stroke="#1d1"
     strokeWidth="4px"
     variants={bottomTeethVariants}
     initial="initial"
     animate={controls}
     fill="#223"
-    exit="exit"
   >
-    <polygon points="216.51 0 259.81 99 173.21 99 216.51 0" />
-    <polygon points="43.3 0 86.6 99 0 99 43.3 0" />
-    <polygon points="303.11 0 346.41 99 259.81 99 303.11 0" />
-    <polygon points="389.71 0 433.01 99 346.41 99 389.71 0" />
-    <polygon points="476.31 0 519.62 99 433.01 99 476.31 0" />
-    <polygon points="562.92 0 606.22 99 519.62 99 562.92 0" />
-    <polygon points="649.52 0 692.82 99 606.22 99 649.52 0" />
-    <polygon points="129.9 0 173.21 99 86.6 99 129.9 0" />
-  </motion.svg>
+    <polygon points="262.43 0 306.17 100 218.69 100 262.43 0" />
+    <polygon points="87.48 0 131.22 100 43.74 100 87.48 0" />
+    <polygon points="349.91 0 393.65 100 306.17 100 349.91 0" />
+    <polygon points="437.39 0 481.13 100 393.65 100 437.39 0" />
+    <polygon points="524.86 0 568.6 100 481.13 100 524.86 0" />
+    <polygon points="612.34 0 656.08 100 568.6 100 612.34 0" />
+    <polygon points="699.82 0 743.56 100 656.08 100 699.82 0" />
+    <polygon points="174.96 0 218.69 100 131.22 100 174.96 0" />
+  </motion.g>
 );
 
 export const Animation5 = () => {
@@ -253,9 +247,15 @@ export const Animation5 = () => {
   return (
     <>
       <LeftArrow to="/4" />
-      <TopTeeth controls={controls} />
-      <Fish controls={controls} handleClick={handleClick} />
-      <BottomTeeth controls={controls} />
+      <StyledMotionSvg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 787.3 100"
+        exit="exit"
+      >
+        <Fish controls={controls} handleClick={handleClick} />
+        <TopTeeth controls={controls} />
+        <BottomTeeth controls={controls} />
+      </StyledMotionSvg>
       <RightArrow to="/1" />
       <Footer />
     </>
