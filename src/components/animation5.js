@@ -28,7 +28,7 @@ const fishVariants = {
       delay: 0.3,
     }
   },
-  swim: {
+  swimLoop: {
     translateX: [
       0, -150, -200, -150,    0,  150,  200,  150,    0,
     ],
@@ -43,7 +43,7 @@ const fishVariants = {
       loop: Infinity,
     },
   },
-  swimLess: {
+  swim: {
     translateX: [
       0, -150, -200, -150,    0,  150,  200,  150,    0,
     ],
@@ -55,6 +55,7 @@ const fishVariants = {
     ],
     transition: {
       duration: 2,
+      loop: 1,
     },
   },
   hide: {
@@ -110,7 +111,7 @@ const topTeethVariants = {
     transition: {
       duration: 0.75,
       ease: [0.75, 0, 1, 0.25],
-      delay: 1.5,
+      delay: 1.25,
     },
   },
   hide: {
@@ -167,7 +168,7 @@ const bottomTeethVariants = {
     transition: {
       duration: 0.75,
       ease: [0.75, 0, 1, 0.25],
-      delay: 1.5,
+      delay: 1.25,
     },
   },
   hide: {
@@ -206,15 +207,15 @@ export const Animation5 = () => {
   const controls = useAnimation();
   const [isSwimming, setIsSwimming] = useState(false);
   
-  const swim = () => {
+  const swimLoop = () => {
     if (isSwimming) return;
     setIsSwimming(true);
-    controls.start('swim');
+    controls.start('swimLoop');
   };
 
   const bite = async () => {
     await controls.start('bite');
-    await controls.stop('swim');
+    await controls.stop('swimLoop');
     await controls.start('hide');
     reset();
   };
@@ -226,7 +227,7 @@ export const Animation5 = () => {
 
   const handleClick = async () => {
     setIsSwimming(true);
-    controls.start('swimLess');
+    controls.start('swim');
     await controls.start('biteDelay');
     await controls.start('hide');
     reset();
@@ -235,7 +236,7 @@ export const Animation5 = () => {
   useShortcut({
     eventType: 'keydown',
     triggerKey: 'Space',
-    eventHandler: swim,
+    eventHandler: swimLoop,
   });
 
   useShortcut({
